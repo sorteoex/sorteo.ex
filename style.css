@@ -1,0 +1,81 @@
+#rectangulo-negro {
+  position: absolute;
+  text-align: left;
+  background-color: #000000;
+  color: #fff;
+  width: 100%; /* Cambiado a 100% para hacerlo adaptable */
+  top: 0;
+  left: 0;
+  padding: 17px;
+  border-radius: 0;
+  font-family: Georgia;
+  font-size: 20px;
+}
+
+#text1,
+#text2,
+#text3 {
+  color: #ead1dc;
+  margin-top: 0;
+  font-size: 14px;
+}
+
+body {
+  font-family: Georgia;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: #ff01a2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#nombreMostrado {
+  font-size: 5vw; /* Utilizando unidades vw para hacerlo adaptable */
+  margin: 0;
+  padding: 5px;
+  background-color: #000000;
+  color: white;
+  margin-bottom: 1vh; /* Utilizando unidades vh para hacerlo adaptable */
+}
+
+button {
+  font-family: Georgia;
+  background-color: #673BB7;
+  color: white;
+  padding: 1vh 1vw; /* Utilizando unidades vh y vw para hacerlo adaptable */
+  font-size: 2vw;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 3vh;
+  margin-top: 5vh;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#ganadores {
+  font-size: 2vh; /* Utilizando unidades vh para hacerlo adaptable */
+  margin: 0;
+  color: #ead1dc;
+}
+
+#winnersList {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#winnersList li {
+  margin-right: 0.5vw; /* Utilizando unidades vw para hacerlo adaptable */
+  padding: 0.5vh 0.5vw; /* Utilizando unidades vh y vw para hacerlo adaptable */
+  border: 0;
+  border-radius: 100px;
+  background-color: #efefef;
+}
