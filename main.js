@@ -2,7 +2,7 @@ const winnerButton = document.querySelector('button');
 const winnerName = document.querySelector('.winner');
 const winnersList = document.querySelector('.winners-list');
 
-const contestants = ["Daniel", "tomás", "martin", "matias", "marcos"];
+const contestants = ['@francisuarezz_', '@karmela_27', '@22jenni_cortes', '@andresflorido_', '@danigmez94', '@lorenamoralesprado', '@mishisanin94', '@nabilafdzz', '@quimera.tx', '@rociorodrigueez.17', '@samiruiz23', '@skalimadani_', '@sradluck', '@vanee.carrizo_'];
 let firstTime = true;
 
 const pickAWinner = () => {
