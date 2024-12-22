@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sorteo.ex</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("UaiETCp7xM-3YTYZo");
+        })();
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <nav>
+            <div class="logo">
+                <i class="fab fa-instagram"></i>
+                <span>sorteo.ex</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="reglas.html">Reglas</a>
+            </div>
+            <div class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <label for="theme-toggle" class="switch">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main>
+            <h1>sorteo en instagram</h1>
+            <p class="subtitle">obtené un comentario ganador al azar de tus fotos y videos de Instagram.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <p>Pega el link de la publicación del sorteo</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <p>Seleccionar y filtrar</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <p>Click en cargar comentarios</p>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="form-container">
+                    <form id="linkForm" onsubmit="return sendEmail(event)">
+                        <div class="form-header">
+                            <i class="fab fa-instagram"></i>
+                            <h2>Ingresa el link de tu sorteo</h2>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-field">
+                                <label>Link de la publicación de Instagram</label>
+                                <input type="text" name="link" placeholder="https://instagram.com/p/..." required>
+                                <span class="input-hint">Ejemplo: https://instagram.com/p/ABC123xyz</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span>Seleccionar</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h2>Opciones de filtrado</h2>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="filterMentions">
+                            <span class="checkmark"></span>
+                            <div class="filter-label">
+                                <i class="fas fa-at"></i>
+                                Debe mencionar usuarios
+                            </div>
+                        </label>
+                        <div class="mentions-config" style="display: none;">
+                            <div class="mentions-count">
+                                <label>Cantidad de menciones:</label>
+                                <div class="counter-input">
+                                    <button type="button" class="counter-btn minus">-</button>
+                                    <input type="number" min="1" max="5" value="1" id="mentionsCount">
+                                    <button type="button" class="counter-btn plus">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="filterFollowers">
+                            <span class="checkmark"></span>
+                            <div class="filter-label">
+                                <i class="fas fa-user-plus"></i>
+                                Debe seguir al perfil
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="filterLikes">
+                            <span class="checkmark"></span>
+                            <div class="filter-label">
+                                <i class="fas fa-heart"></i>
+                                Debe dar like a la publicación
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="filter-group winners-section">
+                        <label>Cantidad de ganadores:</label>
+                        <div class="counter-input">
+                            <button type="button" class="counter-btn minus">-</button>
+                            <input type="number" id="winnersCount" min="1" max="10" value="1">
+                            <button type="button" class="counter-btn plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="paymentModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>🎉 ¡Casi listo!</h2>
+                        <button class="close-modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="premium-features">
+                            <h3>Características Premium</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Filtrado de comentarios</li>
+                                <li><i class="fas fa-check"></i> Sin límite de comentarios</li>
+                                <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="payment-options">
+                            <div class="price-card">
+                                <h4>Premium</h4>
+                                <div class="price">$4.99</div>
+                                <button class="payment-btn">Pagar ahora</button>
+                            </div>
+                        </div>
+
+                        <div class="code-section">
+                            <p>¿Tenes un código de sorteo gratis?</p>
+                            <div class="code-input">
+                                <input type="text" id="promoCode" placeholder="Ingresa tu código">
+                                <button id="validateCode">Validar</button>
+                            </div>
+                        </div>
+
+                        <div class="demo-section">
+                            <p class="demo-title">¿Queres ver cómo funciona?</p>
+                            <div class="demo-container">
+                                <a href="demo.html" class="demo-btn">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>Probar Demo Gratis</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comments-section">
+                <button class="load-comments-btn">Cargar Comentarios</button>
+                <p class="comments-limit">Gratis hasta 100 comentarios</p>
+            </div>
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-waves">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                <defs>
+                    <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use href="#wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use href="#wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use href="#wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use href="#wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        
+        <div class="footer-content">
+            <div class="footer-section brand">
+                <h3><i class="fab fa-instagram"></i> sorteo.ex</h3>
+                <p>La plataforma #1 para sorteos transparentes y confiables</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/los.mejores.sorteos.ok" class="social-btn" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section links">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="reglas.html">Reglas</a></li>
+                    <li><a href="terminos.html">Términos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section contact">
+                <h4>Contacto</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> @los.mejores.sorteos.ok</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-border"></div>
+            <p>&copy; 2024 sorteo.ex. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html> 
