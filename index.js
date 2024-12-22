@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const loadCommentsBtn = document.querySelector('.load-comments-btn');
 
         // Validar que el link sea de Instagram
-        if (!input.value.trim().toLowerCase().startsWith('https://instagram.com/')) {
+        if (!input.value.trim().toLowerCase().startsWith('https://www.instagram.com/')) {
             input.classList.add('error');
             setTimeout(() => input.classList.remove('error'), 1000);
             return false;
